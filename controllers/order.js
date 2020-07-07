@@ -1,7 +1,6 @@
 const Order = require("../models/Order");
 
 const errorHandler = require("../utils/errorHandler");
-const { skipPartiallyEmittedExpressions } = require("typescript");
 
 module.exports.getAll = async (req, res) => {
   const query = {
