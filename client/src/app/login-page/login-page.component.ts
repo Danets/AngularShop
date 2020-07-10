@@ -1,30 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  styleUrls: ['./login-page.component.css'],
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
+  authSub: Subscription;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.checkingAccess();
   }
 
-  initForm() {
+  ngOnDestroy(): void {
+    if (this.authSub) {
+      this.authSub.unsubscribe();
+    }
+  }
+
+  initForm(): void {
     this.form = new FormGroup({
-      email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", [Validators.required, Validators.minLength(6)]),
-    })
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+    });
+  }
+
+  checkingAccess(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params['registered']) {
+        console.log('You are welcome!');
+      } else if (params['refused']) {
+        console.log('You gotta register!');
+      }
+    });
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    this.authSub = this.authService.login(this.form.value).subscribe(
+      (res) => console.log(res),
+      (err) => console.error(err)
+    );
     this.form.reset();
   }
-
 }
