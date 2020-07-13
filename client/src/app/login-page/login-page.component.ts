@@ -47,6 +47,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       } else if (params['refused']) {
         ErrorService.handleError("You gotta register!");
       }
+      else if (params['sessionExpired']) {
+        ErrorService.handleError("You gotta sign in again");
+      }
     });
   }
 
