@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
+import { ErrorService } from '../shared/helpers/error.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -46,7 +47,9 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
           queryParams: {registered: true}
         })
       },
-      (err) => console.error(err)
+      (err) => {
+        ErrorService.handleError(err.error.message);
+      }
     );
     this.form.reset();
   }

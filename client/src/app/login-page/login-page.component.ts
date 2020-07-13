@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
+import { ErrorService } from '../shared/helpers/error.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-login-page',
@@ -42,9 +43,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   checkingAccess(): void {
     this.route.queryParams.subscribe((params) => {
       if (params['registered']) {
-        console.log('You are welcome!');
+        ErrorService.handleError("You are welcome!");
       } else if (params['refused']) {
-        console.log('You gotta register!');
+        ErrorService.handleError("You gotta register!");
       }
     });
   }
@@ -52,7 +53,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.authSub = this.authService.login(this.form.value).subscribe(
       (res) => console.log(res),
-      (err) => console.error(err)
+      (err) => {
+        ErrorService.handleError(err.error.message);
+      }
     );
     this.form.reset();
   }

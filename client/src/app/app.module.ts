@@ -11,7 +11,7 @@ import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.co
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 
-import { TokenInterceptor } from './shared/guards/token.interceptor';
+import { TokenInterceptor } from './shared/helpers/token.interceptor';
 
 @NgModule({
   declarations: [
