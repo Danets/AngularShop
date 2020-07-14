@@ -4,7 +4,7 @@
     <a [routerLink]="[link.url]" class="waves-effect waves-orange">{{link.name}}</a>
   </li>
   <li class="bold last">
-    <a href="#" class="waves-effect waves-orange">Logout</a>
+    <a href="#" (click)="logout($event)" class="waves-effect waves-orange">Logout</a>
   </li>
 </ul>
 
@@ -18,10 +18,10 @@
   </a>
   <ul>
     <li>
-      <a class="btn-floating green"><i class="material-icons">assignment</i></a>
+      <a routerLink="/orders" class="btn-floating green"><i class="material-icons">assignment</i></a>
     </li>
     <li>
-      <a class="btn-floating blue" (click)="logout($event)"><i class="material-icons">list</i></a>
+      <a routerLink="/categories" class="btn-floating blue"><i class="material-icons">list</i></a>
     </li>
   </ul>
 </div>

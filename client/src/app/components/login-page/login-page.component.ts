@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../shared/services/auth.service';
-import { MaterialService } from '../shared/helpers/material.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { MaterialService } from '../../shared/helpers/material.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-login-page',
@@ -45,7 +45,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       if (params['registered']) {
         MaterialService.handleError("You are welcome!");
       } else if (params['refused']) {
-        MaterialService.handleError("You gotta register!");
+        MaterialService.handleError("You gotta log in!");
       }
       else if (params['sessionExpired']) {
         MaterialService.handleError("You gotta sign in again");

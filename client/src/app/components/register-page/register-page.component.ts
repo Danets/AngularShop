@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../shared/services/auth.service';
-import { MaterialService } from '../shared/helpers/material.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { MaterialService } from '../../shared/helpers/material.service';
 import { Subscription } from 'rxjs';
 
 @Component({

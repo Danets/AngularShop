@@ -8,11 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { RegisterPageComponent } from './components/register-page/register-page.component';
 
 import { TokenInterceptor } from './shared/helpers/token.interceptor';
-import { OverviewComponent } from './overview/overview.component';
+import { OverviewComponent } from './components/overview/overview.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { HistoryComponent } from './components/history/history.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,11 @@ import { OverviewComponent } from './overview/overview.component';
     SiteLayoutComponent,
     RegisterPageComponent,
     OverviewComponent,
+    AnalyticsComponent,
+    HistoryComponent,
+    OrdersComponent,
+    CategoriesComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
