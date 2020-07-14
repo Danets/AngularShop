@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
-import { ErrorService } from '../shared/helpers/error.service';
+import { MaterialService } from '../shared/helpers/material.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-login-page',
@@ -43,21 +43,24 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   checkingAccess(): void {
     this.route.queryParams.subscribe((params) => {
       if (params['registered']) {
-        ErrorService.handleError("You are welcome!");
+        MaterialService.handleError("You are welcome!");
       } else if (params['refused']) {
-        ErrorService.handleError("You gotta register!");
+        MaterialService.handleError("You gotta register!");
       }
       else if (params['sessionExpired']) {
-        ErrorService.handleError("You gotta sign in again");
+        MaterialService.handleError("You gotta sign in again");
       }
     });
   }
 
   onSubmit() {
     this.authSub = this.authService.login(this.form.value).subscribe(
-      (res) => console.log(res),
+      (res) => {
+        console.log(res);
+        this.router.navigate(['overview']);
+      },
       (err) => {
-        ErrorService.handleError(err.error.message);
+        MaterialService.handleError(err.error.message);
       }
     );
     this.form.reset();
