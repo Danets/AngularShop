@@ -5,12 +5,22 @@
   </button>
 </div>
 
-<div class="row" *ngIf="!loading">
+<div class="row" *ngIf="categories$ | async as categories; else loader">
   <div class="col s12">
-    <div class="collection">
-      <a href="#!" *ngFor="let category of categories" class="collection-item">{{category.name}}</a>
+    <div class="collection" *ngIf="categories.length > 0; else empty">
+      <a
+        [routerLink]="['/categories', category._id]"
+        *ngFor="let category of categories"
+        class="collection-item"
+        >{{ category.name }}</a
+      >
     </div>
+    <ng-template #empty>
+      <div class="center">There is no category</div>
+    </ng-template>
   </div>
 </div>
 
-<app-loader *ngIf="loading"></app-loader>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
