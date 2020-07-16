@@ -10,4 +10,8 @@ export class MaterialService {
   static actionBtn(elem: ElementRef) {
     M.FloatingActionButton.init(elem.nativeElement)
   }
+
+  static reInitTextField() {
+    M.updateTextFields();
+  }
 }

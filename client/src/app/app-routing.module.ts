@@ -10,6 +10,7 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { HistoryComponent } from './components/history/history.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoriesFormComponent } from './components/categories/categories-form/categories-form.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,8 @@ const routes: Routes = [
       { path: 'history', component: HistoryComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'categories', component: CategoriesComponent },
+      { path: 'categories/new', component: CategoriesFormComponent },
+      { path: 'categories/:id', component: CategoriesFormComponent },
     ],
   },
 ];

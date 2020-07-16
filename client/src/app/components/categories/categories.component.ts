@@ -11,7 +11,6 @@ import { delay } from 'rxjs/operators';
 })
 export class CategoriesComponent implements OnInit {
   categories$: Observable<Category[]>;
-  // loading = false;
 
   constructor(private categoriesService: CategoriesService) {}
 
@@ -20,13 +19,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   getCategories() {
-    // this.loading = true;
-    this.categories$ = this.categoriesService.fetch()
-    .pipe(delay(3000))
-    // .subscribe((res) => {
-    //   this.loading = false;
-    //   this.categories = res;
-    //   console.log(`Categories: ${res}`)
-    // });
+    this.categories$ = this.categoriesService.fetch();
   }
 }
