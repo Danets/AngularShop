@@ -6,7 +6,6 @@ import { CategoriesService } from 'src/app/shared/services/categories.service';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { MaterialService } from 'src/app/shared/helpers/material.service';
-import { ReadVarExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-categories-form',
@@ -19,6 +18,7 @@ export class CategoriesFormComponent implements OnInit {
   @ViewChild('uploadfile') uploadElem: ElementRef;
   image: File;
   imagePreview = '';
+  category: Category;
 
   constructor(
     private route: ActivatedRoute,
@@ -57,6 +57,7 @@ export class CategoriesFormComponent implements OnInit {
               name: category.name,
             });
             this.imagePreview = category.srcUrl;
+            this.category = category;
             MaterialService.reInitTextField();
           }
           this.form.enable();
@@ -70,16 +71,39 @@ export class CategoriesFormComponent implements OnInit {
   }
 
   onUpload(event: any) {
-    const file = event.target.files[0];
-    this.image = file;
+    this.image = event.target.files[0];
+    // this.image = file;
 
-    // here is we uses Filereader for showing preview image 
+    // here is we uses Filereader for showing preview image
     const reader = new FileReader();
     reader.onload = () => {
-      this.imagePreview = reader.result;
+      if (reader.result instanceof ArrayBuffer) {
+        const arr = new Uint8Array(reader.result).subarray(0, 4);
+      } else {
+        this.imagePreview = reader.result;
+        throw new Error('Unexpected result');
+      }
     };
-    reader.readAsDataURL(file);
+
+    reader.readAsDataURL(this.image);
   }
 
-  onSubmit() {}
+  onSubmit() {
+    let subs$;
+    if (!this.editMode) {
+      subs$ = this.categoriesService.create(this.form.value.name, this.image);
+    } else {
+      subs$ = this.categoriesService.update(
+        this.category._id,
+        this.form.value.name,
+        this.image
+      );
+    }
+    subs$.subscribe(
+      (category) => {
+        this.category = category;
+      },
+      (error) => MaterialService.handleError(error.error.message)
+    );
+  }
 }
