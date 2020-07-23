@@ -29,7 +29,7 @@ require('./middleware/passport')(passport);
 app.use( require('morgan')('dev'));
 
 // OPEN ACCESS TO IMAGE
-app.use('/uploads', express.static('/uploads'));
+app.use('/uploads', express.static(__dirname+'/uploads/'));
 
 // BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
