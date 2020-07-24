@@ -1,6 +1,6 @@
 import { Category } from './../../../shared/models/categoty';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
 import { of } from 'rxjs';
@@ -22,6 +22,7 @@ export class CategoriesFormComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private categoriesService: CategoriesService
   ) {}
 
@@ -105,5 +106,20 @@ export class CategoriesFormComponent implements OnInit {
       },
       (error) => MaterialService.handleError(error.error.message)
     );
+  }
+
+  onRemove() {
+    const agree = window.confirm(
+      `Do you want to delete ${this.category.name}?`
+    );
+    if (agree) {
+      this.categoriesService.remove(this.category._id).subscribe(
+        (res) => {
+          MaterialService.handleError(res.message);
+          this.router.navigateByUrl('/categories');
+        },
+        (error) => MaterialService.handleError(error.error.message)
+      );
+    }
   }
 }

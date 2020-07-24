@@ -5,7 +5,7 @@
     {{ editMode ? "Edit" : "Add" }} Category
   </h4>
   <span>
-    <button class="btn btn-small red">
+    <button *ngIf="editMode" class="btn btn-small red" (click)="onRemove()">
       <i class="material-icons">delete</i>
     </button>
   </span>
