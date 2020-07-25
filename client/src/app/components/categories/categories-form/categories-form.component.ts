@@ -103,6 +103,7 @@ export class CategoriesFormComponent implements OnInit {
     subs$.subscribe(
       (category) => {
         this.category = category;
+        this.router.navigateByUrl('/categories');
       },
       (error) => MaterialService.handleError(error.error.message)
     );
