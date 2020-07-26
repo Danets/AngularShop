@@ -2,10 +2,10 @@ import { Category } from './../../../shared/models/categoty';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CategoriesService } from 'src/app/shared/services/categories.service';
+import { CategoriesService } from '../../../shared/services/categories.service';
+import { MaterialService } from '../../../shared/helpers/material.service';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { MaterialService } from 'src/app/shared/helpers/material.service';
 
 @Component({
   selector: 'app-categories-form',
