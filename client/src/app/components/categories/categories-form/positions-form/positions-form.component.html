@@ -3,8 +3,8 @@
     <div class="page-subtitle">
       <h4>Positions:</h4>
       <button
-        class="waves-effect waves-light btn grey darken-1 btn-small modal-trigger"
-        data-target="create-modal"
+        class="waves-effect waves-light btn grey darken-1 btn-small"
+        (click)="onAddPosition()"
       >
         Add Position
       </button>
@@ -15,6 +15,7 @@
         <a
           *ngFor="let position of positions"
           class="collection-item collection-item-icon"
+          (click)="onSelectPosition(position)"
         >
           <span
             >{{ position.name }}<strong>{{ position.cost }} $</strong>
@@ -35,7 +36,7 @@
   </div>
 </div>
 
-<div id="create-modal" class="modal">
+<div class="modal" #modal>
   <div class="modal-content">
     <h4 class="mb1">Add Position</h4>
     <div class="input-field">
@@ -48,9 +49,13 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="modal-action waves-effect waves-black btn-flat">
+    <button
+      type="button"
+      class="modal-action waves-effect waves-black btn-flat"
+      (click)="onCancel()"
+    >
       Cancel
     </button>
-    <button class="modal-action btn waves-effect">Save</button>
+    <button class="modal-action btn waves-effect" type="button">Save</button>
   </div>
 </div>
