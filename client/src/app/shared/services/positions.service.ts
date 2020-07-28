@@ -12,4 +12,12 @@ export class PositionsService {
   fetchPositions(categoryId: string): Observable<Position[]> {
     return this.http.get<Position[]>(`/api/position/${categoryId}`);
   }
+
+  addPosition(position: Position): Observable<Position> {
+    return this.http.post<Position>('/api/position', position);
+  }
+  
+  deletePosition(id: string): Observable<Position> {
+    return this.http.delete<Position>(`/api/position/${id}`);
+  }
 }
