@@ -28,6 +28,8 @@ export class PositionsFormComponent
   form: FormGroup;
   positions: Position[] = [];
   loading: boolean = false;
+  positionId = null;
+
   constructor(private positionsService: PositionsService) {}
 
   ngOnInit(): void {
@@ -62,6 +64,7 @@ export class PositionsFormComponent
     });
   }
   onSelectPosition(position: Position) {
+    this.positionId = position._id;
     this.form.patchValue({
       name: position.name,
       cost: position.cost,
@@ -70,14 +73,35 @@ export class PositionsFormComponent
     this.modal.open();
   }
   onAddPosition() {
+    this.positionId = null;
+    this.form.reset({
+      name: null,
+      cost: 1,
+    });
+    MaterialService.reInitTextField();
     this.modal.open();
   }
   onDeletePosition(position: Position, event: Event) {
     event.stopPropagation();
-    this.positionsService.deletePosition(position._id).subscribe((res) => {
-      MaterialService.handleError('Position was deleted');
-      this.getPositions();
-    });
+    const agree = window.confirm(`Do you wanna delete ${position.name}`);
+    if (agree) {
+      this.positionsService.deletePosition(position._id).subscribe((res) => {
+        MaterialService.handleError('Position was deleted');
+        // 1) Case with method SPLICE
+        // const idx = this.positions.findIndex(
+        //   (pos) => pos._id === position._id
+        // );
+        // this.positions.splice(idx, 1);
+
+        // 2) Case with method FILTER
+        this.positions = this.positions.filter(
+          (pos) => pos._id !== position._id
+        );
+        // this.getPositions();
+      });
+    } else {
+      return null;
+    }
   }
   onCancel() {
     this.modal.close();
@@ -90,18 +114,36 @@ export class PositionsFormComponent
       cost: this.form.value.cost,
       category: this.categoryId,
     };
-    this.positionsService.addPosition(newPosition).subscribe(
-      (position) => {
-        this.positions.push(position);
-        MaterialService.handleError('Position was created');
-      },
-      (error) => MaterialService.handleError(error.error.message),
-      () => {
-        this.modal.close();
-        this.form.reset();
-        this.form.enable();
-      }
-    );
-    // this.getPositions();
+
+    // HERE IS METHOD FOR SUBSCRIBE
+    const completed = () => {
+      this.modal.close();
+      this.form.reset();
+      this.form.enable();
+    };
+    if (this.positionId) {
+      newPosition['_id'] = this.positionId;
+      this.positionsService.updatePosition(newPosition).subscribe(
+        (position) => {
+          // this.getPositions();
+          const idx = this.positions.findIndex(
+            (pos) => pos._id === position._id
+          );
+          this.positions[idx] = position;
+          MaterialService.handleError('Position was updated');
+        },
+        (error) => MaterialService.handleError(error.error.message),
+        completed
+      );
+    } else {
+      this.positionsService.addPosition(newPosition).subscribe(
+        (position) => {
+          this.positions.push(position);
+          MaterialService.handleError('Position was created');
+        },
+        (error) => MaterialService.handleError(error.error.message),
+        completed
+      );
+    }
   }
 }
