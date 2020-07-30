@@ -1,1 +1,44 @@
-<p>orders works!</p>
+<div class="page-title">
+  <h4>Order</h4>
+  <button class="waves-effect btn grey darken-1">
+    Complete
+  </button>
+</div>
+<router-outlet></router-outlet>
+
+<form class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4 class="mb1">Your order</h4>
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Cost</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Alvin</td>
+          <td>3</td>
+          <td>$0.87</td>
+          <td><i class="material-icons pointer">delete</i></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="order-summary">
+      <p>Total cost <strong></strong></p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="modal-action waves-effect waves-black btn-flat"
+    >
+      Cancel
+    </button>
+    <button type="submit" class="modal-action btn waves-effect">Confirm</button>
+  </div>
+</form>
