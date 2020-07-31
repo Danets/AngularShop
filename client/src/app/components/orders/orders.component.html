@@ -1,12 +1,19 @@
 <div class="page-title">
-  <h4>Order</h4>
-  <button class="waves-effect btn grey darken-1">
+  <h4 *ngIf="isRoot; else title">Order</h4>
+  <ng-template #title>
+    <h4>
+      <a routerLink="/orders">Order</a>
+      <i class="material-icons">keyboard_arrow_right</i>
+      Add product
+    </h4>
+  </ng-template>
+  <button (click)="openModal()" class="waves-effect btn grey darken-1">
     Complete
   </button>
 </div>
 <router-outlet></router-outlet>
 
-<form class="modal modal-fixed-footer">
+<form class="modal modal-fixed-footer" #modal>
   <div class="modal-content">
     <h4 class="mb1">Your order</h4>
     <table class="highlight">
@@ -35,10 +42,17 @@
   <div class="modal-footer">
     <button
       type="button"
+      (click)="closeModal()"
       class="modal-action waves-effect waves-black btn-flat"
     >
       Cancel
     </button>
-    <button type="submit" class="modal-action btn waves-effect">Confirm</button>
+    <button
+      type="submit"
+      (click)="submitModal()"
+      class="modal-action btn waves-effect"
+    >
+      Confirm
+    </button>
   </div>
 </form>

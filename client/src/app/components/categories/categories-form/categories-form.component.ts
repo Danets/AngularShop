@@ -1,9 +1,9 @@
-import { Category } from './../../../shared/models/categoty';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoriesService } from '../../../shared/services/categories.service';
 import { MaterialService } from '../../../shared/helpers/material.service';
+import { Category } from './../../../shared/models/categoty';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
@@ -31,14 +31,6 @@ export class CategoriesFormComponent implements OnInit {
       name: new FormControl(null, Validators.required),
     });
     this.form.disable();
-
-    // HERE IS DINAMIC WAY GETTING DATA FROM PARAMS
-    // this.route.params.subscribe((params: Params) => {
-    //   if (params['id']) {
-    //     this.editMode = true;
-    //   } else {
-    //   }
-    // });
 
     this.route.params
       .pipe(
