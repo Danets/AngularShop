@@ -7,7 +7,11 @@
       Add product
     </h4>
   </ng-template>
-  <button (click)="openModal()" class="waves-effect btn grey darken-1">
+  <button
+   (click)="openModal()"
+    class="waves-effect btn grey darken-1"
+    [disabled]="orderService.list.length === 0"
+    >
     Complete
   </button>
 </div>
@@ -27,16 +31,18 @@
       </thead>
 
       <tbody>
-        <tr>
-          <td>Alvin</td>
-          <td>3</td>
-          <td>$0.87</td>
-          <td><i class="material-icons pointer">delete</i></td>
+        <tr *ngFor="let item of orderService.list">
+          <td>{{ item.name }}</td>
+          <td>{{ item.amount }}</td>
+          <td>{{ item.cost }}</td>
+          <td><i class="material-icons pointer" (click)="onRemoveFromOrder(item)">delete</i></td>
         </tr>
       </tbody>
     </table>
     <div class="order-summary">
-      <p>Total cost <strong></strong></p>
+      <p>
+        Total cost: <strong>{{ orderService.total }}</strong>
+      </p>
     </div>
   </div>
   <div class="modal-footer">
@@ -51,6 +57,7 @@
       type="submit"
       (click)="submitModal()"
       class="modal-action btn waves-effect"
+      [disabled]="orderService.list.length === 0"
     >
       Confirm
     </button>
