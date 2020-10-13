@@ -42,6 +42,6 @@ app.use(require('cors')());
 app.use('/api/auth', auth);
 app.use('/api/category', category);
 app.use('/api/position', position);
-app.use('/api/order', order);
+app.use('/api/orders', order);
 
 module.exports = app;

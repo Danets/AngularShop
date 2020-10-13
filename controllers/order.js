@@ -41,7 +41,7 @@ module.exports.getAll = async (req, res) => {
 module.exports.create = async (req, res) => {
   try {
     // LOOKING FOR LAST ORDER BY DATE
-    const lastOrder = Order.findOne({
+    const lastOrder = await Order.findOne({
       user: req.user.id,
     }).sort({ date: -1 });
     const maxOrder = lastOrder ? lastOrder.order : 0;

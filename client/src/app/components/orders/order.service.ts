@@ -42,4 +42,9 @@ export class OrderService {
       return acc;
     }, 0);
   }
+
+  clear() {
+    this.list = [];
+    this.total = 0;
+  }
 }

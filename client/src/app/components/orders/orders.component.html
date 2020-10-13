@@ -49,6 +49,7 @@
     <button
       type="button"
       (click)="closeModal()"
+      [disabled]="isPending"
       class="modal-action waves-effect waves-black btn-flat"
     >
       Cancel
@@ -57,7 +58,7 @@
       type="submit"
       (click)="submitModal()"
       class="modal-action btn waves-effect"
-      [disabled]="orderService.list.length === 0"
+      [disabled]="orderService.list.length === 0 || isPending"
     >
       Confirm
     </button>

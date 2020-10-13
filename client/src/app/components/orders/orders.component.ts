@@ -8,8 +8,9 @@ import {
 import { Router, NavigationEnd } from '@angular/router';
 import { MaterialService } from '../../shared/helpers/material.service';
 import { OrderService } from './order.service';
+import { OrdersService } from './../../shared/services/orders.service';
 import { ModalInterface } from '../../shared/helpers/material.service';
-import { OrderPosition } from '../../shared/models/order';
+import { OrderPosition, Order } from '../../shared/models/order';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -23,7 +24,13 @@ export class OrdersComponent implements OnInit, OnDestroy {
   @ViewChild('modal', { static: true }) modalRef: ElementRef;
   modal: ModalInterface;
   subs: Subscription;
-  constructor(private router: Router, public orderService: OrderService) {}
+  isPending = false;
+  orderSub: Subscription;
+  constructor(
+    private router: Router,
+    public orderService: OrderService,
+    private orders: OrdersService
+  ) {}
 
   ngOnInit(): void {
     this.subs = this.router.events.subscribe((event) => {
@@ -37,15 +44,34 @@ export class OrdersComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subs.unsubscribe();
     this.modal.destroy();
+    if (this.orderSub) {
+      this.orderSub.unsubscribe();
+    }
   }
 
   openModal() {
     this.modal.open();
   }
+
   closeModal() {
     this.modal.close();
   }
+
   submitModal() {
+    this.isPending = true;
+    const order: Order = {
+      list: this.orderService.list.map((order) => {
+        delete order._id;
+        return order;
+      }),
+    };
+    this.orderSub = this.orders.createOrder(order).subscribe((res) => {
+      MaterialService.handleError(
+        `your order has been accepted by № ${res.order}`
+      );
+    });
+    this.isPending = false;
+    this.orderService.clear();
     this.modal.close();
   }
 

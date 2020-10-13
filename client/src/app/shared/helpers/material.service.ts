@@ -20,6 +20,7 @@ export class MaterialService {
   static reInitTextField() {
     M.updateTextFields();
   }
+  
   static modalInit(elem: ElementRef): ModalInterface {
     return M.Modal.init(elem.nativeElement);
   }
