@@ -23,9 +23,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
   isRoot: boolean;
   @ViewChild('modal', { static: true }) modalRef: ElementRef;
   modal: ModalInterface;
-  subs: Subscription;
   isPending = false;
-  orderSub: Subscription;
+  private subs = new Subscription();
   constructor(
     private router: Router,
     public orderService: OrderService,
@@ -33,20 +32,17 @@ export class OrdersComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subs = this.router.events.subscribe((event) => {
+    this.subs.add(this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.isRoot = this.router.url === '/orders';
       }
-    });
+    }));
     this.modal = MaterialService.modalInit(this.modalRef);
   }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
     this.modal.destroy();
-    if (this.orderSub) {
-      this.orderSub.unsubscribe();
-    }
   }
 
   openModal() {
@@ -65,11 +61,11 @@ export class OrdersComponent implements OnInit, OnDestroy {
         return order;
       }),
     };
-    this.orderSub = this.orders.createOrder(order).subscribe((res) => {
+    this.subs.add(this.orders.createOrder(order).subscribe((res) => {
       MaterialService.handleError(
         `your order has been accepted by № ${res.order}`
       );
-    });
+    }))
     this.isPending = false;
     this.orderService.clear();
     this.modal.close();
