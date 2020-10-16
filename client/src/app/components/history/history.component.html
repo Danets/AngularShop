@@ -3,11 +3,14 @@
   <button
     class="btn btn-small"
     data-tooltip="Open filters"
+    data-position="bottom"
+    (click)="onOpenModal()"
+    [ngClass]="{'active': isFilter}"
   >
     <i class="material-icons">filter_list</i>
   </button>
 </div>
-<app-history-filter></app-history-filter>
+<app-history-filter *ngIf="isFilter"></app-history-filter>
 <app-history-list></app-history-list>
 
 <div class="center mb2">
