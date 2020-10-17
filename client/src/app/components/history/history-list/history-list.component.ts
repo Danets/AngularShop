@@ -9,8 +9,14 @@ import { Order } from 'src/app/shared/models/order';
 })
 export class HistoryListComponent implements OnInit {
   @Input() orders: Order[];
-  
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  computeOrder(order: Order): number {
+    return order.list.reduce((acc, curr) => {
+      return (acc += curr.amount * curr.cost);
+    }, 0);
+  }
 }

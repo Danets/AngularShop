@@ -11,9 +11,9 @@
   <tbody>
     <tr *ngFor="let order of orders">
       <td>{{ order.order }}</td>
-      <td>{{ order.date }}</td>
-      <td>{{ order.user }}</td>
-      <td>{{ order.date }}</td>
+      <td>{{ order.date | date:"dd/MM/yyyy" }}</td>
+      <td>{{ order.date | date:"HH:mm:ss" }}</td>
+      <td>{{ computeOrder(order) }}</td>
       <td>
         <button class="btn btn-small grey darken-1">
           <i class="material-icons">open_in_new</i>
