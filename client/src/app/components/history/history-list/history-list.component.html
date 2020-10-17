@@ -9,11 +9,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>21.12.2000</td>
-      <td>14:21</td>
-      <td>12 211 $</td>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.order }}</td>
+      <td>{{ order.date }}</td>
+      <td>{{ order.user }}</td>
+      <td>{{ order.date }}</td>
       <td>
         <button class="btn btn-small grey darken-1">
           <i class="material-icons">open_in_new</i>
@@ -24,30 +24,32 @@
 </table>
 
 <div id="order-list" class="modal modal-fixed-footer">
-    <div class="modal-content">
-        <h4 class="mb1">Order №</h4>
-        <table class="highlight">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Cost</th>
-            </tr>
-            </thead>
+  <div class="modal-content">
+    <h4 class="mb1">Order №</h4>
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Cost</th>
+        </tr>
+      </thead>
 
-            <tbody>
-            <tr>
-                <td>Alvin</td>
-                <td>3</td>
-                <td>$0.87</td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="order-summary">
-            <p>Total Cost<strong>$</strong></p>
-        </div>
+      <tbody>
+        <tr>
+          <td>Alvin</td>
+          <td>3</td>
+          <td>$0.87</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="order-summary">
+      <p>Total Cost<strong>$</strong></p>
     </div>
-    <div class="modal-footer">
-        <button class="modal-action waves-effect waves-black btn-flat">Close</button>
-    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="modal-action waves-effect waves-black btn-flat">
+      Close
+    </button>
+  </div>
 </div>
