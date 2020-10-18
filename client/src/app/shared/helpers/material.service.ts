@@ -8,6 +8,10 @@ export interface ModalInterface {
   destroy?(): void;
 }
 
+export interface DatePickerInterface extends ModalInterface {
+  date?: Date;
+}
+
 export class MaterialService {
   static handleError(error: string) {
     return M.toast({ html: error });
@@ -27,5 +31,16 @@ export class MaterialService {
 
   static initTooltip(elem: ElementRef): ModalInterface {
     return M.Tooltip.init(elem.nativeElement);
+  }
+
+  static initDatePicker(
+    elem: ElementRef,
+    onClose: () => void
+  ): DatePickerInterface {
+    return M.Datepicker.init(elem.nativeElement, {
+      format: 'dd.mm.yyyy',
+      showClearBtn: true,
+      onClose,
+    });
   }
 }
