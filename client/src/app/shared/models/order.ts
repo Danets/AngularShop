@@ -12,3 +12,9 @@ export interface OrderPosition {
   amount: number;
   _id?: string;
 }
+
+export interface Filter {
+  start?: Date;
+  end?: Date;
+  order?: number;
+}
