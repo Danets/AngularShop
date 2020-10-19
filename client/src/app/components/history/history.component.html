@@ -5,13 +5,16 @@
     data-tooltip="Open filters"
     data-position="bottom"
     (click)="onOpenModal()"
-    [ngClass]="{ active: isFilter }"
+    [ngClass]="{ active: isFilter, red: isFilterExist() }"
     #tooltip
   >
     <i class="material-icons">filter_list</i>
   </button>
 </div>
-<app-history-filter *ngIf="isFilter"></app-history-filter>
+<app-history-filter
+  *ngIf="isFilter"
+  (emitedFilter)="onFilter($event)"
+></app-history-filter>
 
 <div *ngIf="!reloading; else reloadingBlock">
   <div *ngIf="orders.length > 0; else empty">

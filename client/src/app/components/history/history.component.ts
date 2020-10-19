@@ -10,11 +10,11 @@ import {
   MaterialService,
   ModalInterface,
 } from '../../shared/helpers/material.service';
-import { Order } from './../../shared/models/order';
+import { Order, Filter } from './../../shared/models/order';
 import { Observable, Subscription } from 'rxjs';
 import { OrdersService } from 'src/app/shared/services/orders.service';
 
-const STEP = 4;
+const STEP = 2;
 
 @Component({
   selector: 'app-history',
@@ -22,13 +22,14 @@ const STEP = 4;
   styleUrls: ['./history.component.css'],
 })
 export class HistoryComponent implements OnInit, AfterViewInit, OnDestroy {
-  public orders: Order[];
+  public orders: Order[] = [];
   public isFilter = false;
   public offset = 0;
   public limit = STEP;
   public loading = false;
   public reloading = false;
   public isMoreOrders = false;
+  public filter: Filter = {};
   private subs = new Subscription();
   @ViewChild('tooltip') tooltipRef: ElementRef;
   tooltip: ModalInterface;
@@ -49,14 +50,16 @@ export class HistoryComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
-  private fetchOrders() {
+  private fetchOrders(): void {
     const params = {
+      ...this.filter,
       offset: this.offset,
       limit: this.limit,
     };
+    console.log(params);
     this.subs.add(
       this.ordersService.getOrders(params).subscribe((orders) => {
-        this.orders = orders;
+        this.orders = this.orders.concat(orders);
         this.isMoreOrders = orders.length < STEP;
         this.loading = false;
         this.reloading = false;
@@ -64,13 +67,27 @@ export class HistoryComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  loadMore() {
-    this.limit += STEP;
+  loadMore(): void {
+    this.offset += STEP;
     this.loading = true;
     this.fetchOrders();
   }
 
   onOpenModal(): void {
     this.isFilter = !this.isFilter;
+  }
+
+  onFilter(filter: Filter): void {
+    if (filter) {
+      this.filter = filter;
+    }
+    this.orders = [];
+    this.offset = 0;
+    this.reloading = true;
+    this.fetchOrders();
+  }
+
+ public isFilterExist(): boolean {
+    return Object.keys(this.filter).length > 0
   }
 }
