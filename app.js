@@ -5,6 +5,7 @@ const auth =  require('./routes/auth');
 const position =  require('./routes/position');
 const category =  require('./routes/category');
 const order =  require('./routes/order');
+const analytics =  require('./routes/analytics');
 
 const bodyParser = require('body-parser');
 
@@ -43,5 +44,6 @@ app.use('/api/auth', auth);
 app.use('/api/category', category);
 app.use('/api/position', position);
 app.use('/api/orders', order);
+app.use('/api/analytics', analytics);
 
 module.exports = app;
