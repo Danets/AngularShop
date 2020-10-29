@@ -1,1 +1,69 @@
-<p>overview works!</p>
+<div class="page-title">
+  <h4>
+    Overview for yesterday ()
+    <i class="material-icons black-text pointer">info_outline</i>
+  </h4>
+</div>
+
+<div class="row" *ngIf="data$ | async as data; else loader">
+  <div class="col s12 l6" *ngIf="data.length > 0; else empty">
+    <div class="card light-blue lighten-2 white-text">
+      <div class="card-content">
+        <span class="card-title">Profit:</span>
+        <h3>{{ data.profit.last }}$</h3>
+        <h3
+          class="m0 mb1"
+          [ngClass]="{
+            'green-text text-darken-2': data.profit.isHigher,
+            'red-text': !data.profit.isHigher
+          }"
+        >
+          <i class="material-icons">
+            {{ data.profit.isHigher ? "arrow_upward" : "arrow_downward" }}
+          </i>
+          {{ data.profit.percent }}%
+        </h3>
+        <p>
+          Profit your business bigger than {{ data.profit.percent }}%
+          {{ data.profit.isHigher ? "higher" : "lower" }} middle:
+          {{ data.profit.compare }} $ per day
+        </p>
+      </div>
+    </div>
+  </div>
+  <ng-template #empty>
+    <div class="center">There are no Profit!</div>
+  </ng-template>
+
+  <div class="col s12 l6" *ngIf="data.length > 0; else empty">
+    <div class="card orange lighten-2 white-text">
+      <div class="card-content">
+        <span class="card-title">Orders:</span>
+        <h3>{{ data.orders.last }} orders</h3>
+        <h3
+          class="m0 mb1"
+          [ngClass]="{
+            'green-text text-darken-2': data.orders.isHigher,
+            'red-text': !data.orders.isHigher
+          }"
+        >
+          <i class="material-icons">
+            {{ data.orders.isHigher ? "arrow_upward" : "arrow_downward" }}
+          </i>
+          {{ data.orders.percent }}%
+        </h3>
+        <p>
+          Amount orders for yesterday on {{ data.orders.percent }}%
+          {{ data.orders.isHigher ? "higher" : "lower" }} the middle value:
+          {{ data.orders.compare }} orders per day
+        </p>
+      </div>
+    </div>
+  </div>
+  <ng-template #empty>
+    <div class="center">There are no Orders!</div>
+  </ng-template>
+</div>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

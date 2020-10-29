@@ -1,10 +1,14 @@
 <ul class="sidenav sidenav-fixed a-sidenav">
   <h4>AngularShop</h4>
   <li class="bold" routerLinkActive="active" *ngFor="let link of links">
-    <a [routerLink]="[link.url]" class="waves-effect waves-orange">{{link.name}}</a>
+    <a [routerLink]="[link.url]" class="waves-effect waves-orange">{{
+      link.name
+    }}</a>
   </li>
   <li class="bold last">
-    <a href="#" (click)="logout($event)" class="waves-effect waves-orange">Logout</a>
+    <a href="#" (click)="logout($event)" class="waves-effect waves-orange"
+      >Logout</a
+    >
   </li>
 </ul>
 
@@ -18,10 +22,25 @@
   </a>
   <ul>
     <li>
-      <a routerLink="/orders" class="btn-floating green"><i class="material-icons">assignment</i></a>
+      <a routerLink="/orders" class="btn-floating green"
+        ><i class="material-icons">assignment</i></a
+      >
     </li>
     <li>
-      <a routerLink="/categories" class="btn-floating blue"><i class="material-icons">list</i></a>
+      <a routerLink="/categories" class="btn-floating blue"
+        ><i class="material-icons">list</i></a
+      >
     </li>
   </ul>
+</div>
+
+<a class="waves-effect waves-light btn btn-floating"
+  ><i class="material-icons">info</i></a
+>
+
+<div class="tap-target">
+  <div class="tap-target-content">
+    <h5>Why do we need this page?</h5>
+    <p>Page “Overview” will show the dynamic of sales for the previous day!</p>
+  </div>
 </div>
