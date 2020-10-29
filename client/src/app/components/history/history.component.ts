@@ -56,7 +56,6 @@ export class HistoryComponent implements OnInit, AfterViewInit, OnDestroy {
       offset: this.offset,
       limit: this.limit,
     };
-    console.log(params);
     this.subs.add(
       this.ordersService.getOrders(params).subscribe((orders) => {
         this.orders = this.orders.concat(orders);
