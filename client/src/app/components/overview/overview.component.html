@@ -6,7 +6,7 @@
 </div>
 
 <div class="row" *ngIf="data$ | async as data; else loader">
-  <div class="col s12 l6" *ngIf="data.length > 0; else empty">
+  <div class="col s12 l6">
     <div class="card light-blue lighten-2 white-text">
       <div class="card-content">
         <span class="card-title">Profit:</span>
@@ -31,11 +31,8 @@
       </div>
     </div>
   </div>
-  <ng-template #empty>
-    <div class="center">There are no Profit!</div>
-  </ng-template>
 
-  <div class="col s12 l6" *ngIf="data.length > 0; else empty">
+  <div class="col s12 l6">
     <div class="card orange lighten-2 white-text">
       <div class="card-content">
         <span class="card-title">Orders:</span>
@@ -60,9 +57,6 @@
       </div>
     </div>
   </div>
-  <ng-template #empty>
-    <div class="center">There are no Orders!</div>
-  </ng-template>
 </div>
 <ng-template #loader>
   <app-loader></app-loader>

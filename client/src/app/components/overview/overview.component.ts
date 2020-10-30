@@ -15,7 +15,6 @@ data$: Observable<Overview>;
 
   ngOnInit(): void {
     this.data$ = this.service.getOverview();
-    console.dir(this.data$)
   }
 
 }
