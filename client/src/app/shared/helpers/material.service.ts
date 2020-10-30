@@ -43,4 +43,8 @@ export class MaterialService {
       onClose,
     });
   }
+
+  static initTapTarget(elem: ElementRef): ModalInterface {
+    return M.TapTarget.init(elem.nativeElement);
+  }
 }

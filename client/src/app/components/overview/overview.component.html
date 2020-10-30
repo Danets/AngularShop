@@ -1,7 +1,9 @@
 <div class="page-title">
   <h4>
-    Overview for yesterday ()
-    <i class="material-icons black-text pointer">info_outline</i>
+    Overview for yesterday ({{yesterday | date:"dd.MM.yyyy"}})
+    <i class="material-icons black-text pointer"
+     (click)="openTap()"
+     >info_outline</i>
   </h4>
 </div>
 
@@ -58,6 +60,14 @@
     </div>
   </div>
 </div>
+
 <ng-template #loader>
   <app-loader></app-loader>
 </ng-template>
+
+<div class="tap-target" data-target="menu" #tapTarget>
+  <div class="tap-target-content">
+    <h5>Why do we need this page?</h5>
+    <p>Page “Overview” will show the dynamic of sales for the previous day!</p>
+  </div>
+</div>
