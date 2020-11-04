@@ -56,7 +56,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.authSub = this.authService.login(this.form.value).subscribe(
       (res) => {
-        console.log(res);
         this.router.navigate(['overview']);
       },
       (err) => {
