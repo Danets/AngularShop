@@ -5,6 +5,7 @@ import {
   ViewChild,
   AfterViewInit,
   OnDestroy,
+  ViewContainerRef
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Overview } from 'src/app/shared/models/analytics';
@@ -22,7 +23,7 @@ import * as M from 'materialize-css/dist/js/materialize';
 })
 export class OverviewComponent implements OnInit, AfterViewInit, OnDestroy {
   data$: Observable<Overview>;
-  @ViewChild('tapTarget', { static: true }) tapTargetRef: ElementRef;
+  @ViewChild('tapTarget') tapTargetRef: ElementRef;
   tap: ModalInterface;
   yesterday = new Date();
 
@@ -34,11 +35,11 @@ export class OverviewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.tap = MaterialService.initTapTarget(this.tapTargetRef);
+    // this.tap = MaterialService.initTapTarget(this.tapTargetRef);
   }
 
   ngOnDestroy() {
-    this.tap.destroy();
+    // this.tap.destroy();
   }
 
   openTap() {
