@@ -5,7 +5,7 @@ const errorHandler = require("../utils/errorHandler");
 
 module.exports.overview = async (req, res) => {
   try {
-    const allOrders = await Order.find({ user: req.user.id }).sort({date: 1});
+    const allOrders = await Order.find({ user: req.user.id }).sort({ date: 1 });
     const ordersMap = getOrdersMap(allOrders);
     // AMOUNT OF ORDERS
     const amountOrders = allOrders.length;
@@ -57,7 +57,26 @@ module.exports.overview = async (req, res) => {
   }
 };
 
-module.exports.analytics = async (req, res) => {};
+module.exports.analytics = async (req, res) => {
+  try {
+    const allOrders = await Order.find({ user: req.user.id }).sort({ date: 1 });
+    const ordersMap = getOrdersMap(allOrders);
+    const averageOrder = +(
+      calculatePrise(allOrders) / Object.keys(ordersMap).length
+    ).toFixed(2);
+    const chart = Object.keys(ordersMap).map((label) => {
+      income = calculatePrise(ordersMap[label]);
+      amountOrders = ordersMap[label].length;
+      return { label, income, amountOrders };
+    });
+    res.status(200).json({
+      averageOrder,
+      chart,
+    });
+  } catch (e) {
+    errorHandler(res, e);
+  }
+};
 
 function getOrdersMap(orders = []) {
   const ordersByDay = {};
