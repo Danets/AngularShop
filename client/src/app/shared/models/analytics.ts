@@ -9,3 +9,14 @@ export interface OverviewItem {
   last: number;
   isHigher: boolean;
 }
+
+export interface Analytics {
+  averageOrder: number;
+  chart: analyticsChartItem[];
+}
+
+export interface analyticsChartItem {
+  label: string;
+  income: number;
+  amountOrders: number;
+}
