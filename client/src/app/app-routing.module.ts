@@ -22,6 +22,10 @@ const routes: Routes = [
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginPageComponent },
       { path: 'register', component: RegisterPageComponent },
+      { 
+        path: 'ui-components',
+        loadChildren: () => import('./components/ui-components/ui-components.module').then(m => m.UiComponentsModule)
+      },
     ],
   },
   {
