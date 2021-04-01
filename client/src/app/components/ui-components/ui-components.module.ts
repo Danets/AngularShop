@@ -7,6 +7,7 @@ import { UiComponentsComponent } from './ui-components.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     AccordionComponent,
     ProgressbarComponent,
     StarRatingComponent,
+    TruncatePipe,
   ],
   imports: [
     CommonModule,
