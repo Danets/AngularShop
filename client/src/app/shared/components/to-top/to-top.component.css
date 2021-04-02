@@ -1,0 +1,20 @@
+.toTop {
+  position: fixed;
+  bottom: 280px;
+  right: 50px;
+  background-color: cyan;
+  color: darkmagenta;
+  z-index: 2;
+  border: 0;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  transition: all .3s;
+}
+
+.toTop:hover,
+.toTop:active,
+.toTop:focus {
+  transform: scale(1.5);
+  cursor: pointer;
+}

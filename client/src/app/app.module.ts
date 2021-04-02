@@ -24,6 +24,8 @@ import { OrderCategoriesComponent } from './components/orders/order-categories/o
 import { OrderPositionsComponent } from './components/orders/order-positions/order-positions.component';
 import { HistoryListComponent } from './components/history/history-list/history-list.component';
 import { HistoryFilterComponent } from './components/history/history-filter/history-filter.component';
+import { ToTopComponent } from './shared/components/to-top/to-top.component';
+import { LoaderCircularCustomComponent } from './shared/components/loader-circular-custom/loader-circular-custom.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { HistoryFilterComponent } from './components/history/history-filter/hist
     OrderPositionsComponent,
     HistoryListComponent,
     HistoryFilterComponent,
+    ToTopComponent,
+    LoaderCircularCustomComponent,
   ],
   imports: [
     BrowserModule,

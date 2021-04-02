@@ -6,6 +6,10 @@ html, body {
   margin: 0;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 main {
   min-height: 100%;
   margin-bottom: -250px;
