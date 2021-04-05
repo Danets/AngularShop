@@ -27,6 +27,7 @@ import { HistoryFilterComponent } from './components/history/history-filter/hist
 import { ToTopComponent } from './shared/components/to-top/to-top.component';
 import { LoaderCircularCustomComponent } from './shared/components/loader-circular-custom/loader-circular-custom.component';
 import { FlatPipe } from './shared/pipes/flat.pipe';
+import { SwitcherComponent } from './shared/components/switcher/switcher.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { FlatPipe } from './shared/pipes/flat.pipe';
     ToTopComponent,
     LoaderCircularCustomComponent,
     FlatPipe,
+    SwitcherComponent,
   ],
   imports: [
     BrowserModule,

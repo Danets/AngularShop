@@ -1,0 +1,27 @@
+.switcher-container {
+  position: relative;
+  left: 50%;
+  width: 100px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.switcher {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  transform: translateY(-50%);
+  right: 5%;
+  width: 30px;
+  height: 30px;
+  background-color: green;
+  border-radius: 50%;
+  transition: all .3s;
+}
+
+.switcher.isSwitchOff {
+  right: 65%;
+  background-color: red;
+}
