@@ -28,6 +28,7 @@ import { ToTopComponent } from './shared/components/to-top/to-top.component';
 import { LoaderCircularCustomComponent } from './shared/components/loader-circular-custom/loader-circular-custom.component';
 import { FlatPipe } from './shared/pipes/flat.pipe';
 import { SwitcherComponent } from './shared/components/switcher/switcher.component';
+import { CounterComponent } from './shared/components/counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SwitcherComponent } from './shared/components/switcher/switcher.compone
     LoaderCircularCustomComponent,
     FlatPipe,
     SwitcherComponent,
+    CounterComponent,
   ],
   imports: [
     BrowserModule,

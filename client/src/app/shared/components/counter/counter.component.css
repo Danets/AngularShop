@@ -1,0 +1,37 @@
+.container-counter {
+  position: relative;
+  display: flex;
+  width: 50%;
+  margin: 50px auto;
+}
+
+:host input {
+  margin: 0;
+  border: 1px solid black;
+}
+
+button {
+  color: white;
+}
+
+button.decrement {
+  background-color: red;
+  border: 1px solid red;
+}
+
+button.increment {
+  background-color: green;
+  border: 1px solid green;
+}
+
+/*DISSAPEAR ARROWS IN THE INPUT*/
+/*CHROME, SAFARI, OPERA, EDGE*/
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/*FIREFOX*/
+input[type="number"] {
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,5 @@
+<div class="container-counter">
+    <button class="decrement" (click)="onDecrement()">-</button>
+    <input type="number" [max]="max" [min]="min" [(ngModel)]="counter">
+    <button class="increment" (click)="onIncrement()">+</button>
+</div>
