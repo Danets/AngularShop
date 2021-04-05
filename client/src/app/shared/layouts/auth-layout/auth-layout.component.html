@@ -13,10 +13,12 @@
   <div class="auth-block">
     <router-outlet></router-outlet>
   </div>
-  
-  <app-switcher></app-switcher>
 
-  <app-counter></app-counter>
+  <app-tabs [tabs]="tabs" (onSelected)="selectedTab = $event">
+    <app-switcher *ngIf="selectedTab === 0"></app-switcher>
+    <app-counter *ngIf="selectedTab === 1"></app-counter>
+  </app-tabs>
+  
 </main>
 
 <app-loader-circular-custom></app-loader-circular-custom>

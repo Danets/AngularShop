@@ -29,6 +29,7 @@ import { LoaderCircularCustomComponent } from './shared/components/loader-circul
 import { FlatPipe } from './shared/pipes/flat.pipe';
 import { SwitcherComponent } from './shared/components/switcher/switcher.component';
 import { CounterComponent } from './shared/components/counter/counter.component';
+import { TabsComponent } from './shared/components/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CounterComponent } from './shared/components/counter/counter.component'
     FlatPipe,
     SwitcherComponent,
     CounterComponent,
+    TabsComponent,
   ],
   imports: [
     BrowserModule,

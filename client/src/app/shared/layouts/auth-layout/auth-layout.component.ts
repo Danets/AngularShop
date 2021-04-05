@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-auth-layout',
   templateUrl: './auth-layout.component.html',
-  styleUrls: ['./auth-layout.component.css']
+  styleUrls: ['./auth-layout.component.css'],
 })
-export class AuthLayoutComponent implements OnInit {
+export class AuthLayoutComponent {
   public copyrightDate = new Date().getFullYear();
 
-  constructor() { }
+  public tabs = [
+    { title: 'Tab1', active: true },
+    { title: 'Tab2', active: false },
+  ];
 
-  ngOnInit(): void {
-  }
-
+  public selectedTab = 0;
 }
