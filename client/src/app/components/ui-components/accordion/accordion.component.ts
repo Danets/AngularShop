@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Card } from '../../../shared/models/card';
+import { slideDownAnimation } from '../../../shared/animations/slide-down.animation';
 
 @Component({
   selector: 'app-accordion',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.css'],
+  animations: [slideDownAnimation]
 })
 export class AccordionComponent {
   public cards: Card[] = [

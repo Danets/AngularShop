@@ -13,7 +13,10 @@
       (click)="onExpand(card)"
       >expand_less</i
     >
-    <p class="content" [class.isExpanded]="card.isExpanded">
+    <p class="content" 
+    *ngIf="card.isExpanded"
+    @slideDownAnimation
+    >
       {{ card.content }}
     </p>
   </div>
