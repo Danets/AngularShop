@@ -3,11 +3,14 @@
     <a routerLink="/" class="brand-logo">Angular</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li routerLinkActive="active"><a routerLink="/ui-components">UI</a></li>
-      <li routerLinkActive="active"><a routerLink="/login">Sign in</a></li>
-      <li routerLinkActive="active"><a routerLink="/register">Sign up</a></li>
+      <li routerLinkActive="active"><a routerLink="/login" (click)="isVisible = !isVisible">Sign in</a></li>
+      <li routerLinkActive="active"><a routerLink="/register"  (click)="isVisible = !isVisible">Sign up</a></li>
     </ul>
   </div>
 </nav>
+
+<h1 *ngIf="isVisible" @fadeInAnimation>You Gotta Auth!</h1>
+<h1 *ngIf="!isVisible" @fadeInAnimation>By</h1>
 
 <main>
   <div class="auth-block">
