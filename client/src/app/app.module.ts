@@ -31,6 +31,7 @@ import { FlatPipe } from './shared/pipes/flat.pipe';
 import { SwitcherComponent } from './shared/components/switcher/switcher.component';
 import { CounterComponent } from './shared/components/counter/counter.component';
 import { TabsComponent } from './shared/components/tabs/tabs.component';
+import { MouseOverDirective } from './shared/directives/mouse-over.directive';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { TabsComponent } from './shared/components/tabs/tabs.component';
     SwitcherComponent,
     CounterComponent,
     TabsComponent,
+    MouseOverDirective,
   ],
   imports: [
     BrowserModule,
