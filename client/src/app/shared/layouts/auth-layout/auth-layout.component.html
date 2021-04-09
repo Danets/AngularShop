@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-wrapper grey darken-1">
-    <a routerLink="/" class="brand-logo">Angular</a>
+    <a routerLink="/" class="brand-logo" appMouseOver>Angular</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li routerLinkActive="active"><a routerLink="/ui-components">UI</a></li>
       <li routerLinkActive="active"><a routerLink="/login" (click)="isVisible = !isVisible">Sign in</a></li>
@@ -9,12 +9,12 @@
   </div>
 </nav>
 
-<h1 *ngIf="isVisible" @fadeInAnimation>You Gotta Auth!</h1>
-<h1 *ngIf="!isVisible" @fadeInAnimation>By</h1>
+<!-- <h1 *ngIf="isVisible" [@fadeInAnimation]>You Gotta Auth!</h1>
+<h1 *ngIf="!isVisible" @fadeInAnimation>By Client!</h1> -->
 
 <main>
-  <div class="auth-block">
-    <router-outlet></router-outlet>
+  <div class="auth-block" [@sliderRouteAnimation]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
   </div>
 
   <app-tabs [tabs]="tabs" (onSelected)="selectedTab = $event">

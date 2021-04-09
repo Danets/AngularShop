@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { fadeInAnimation } from '../../animations/fade-in.animation';
-
+import { sliderRouteAnimation } from '../../animations/slider-router.animation';
 @Component({
   selector: 'app-auth-layout',
   templateUrl: './auth-layout.component.html',
   styleUrls: ['./auth-layout.component.css'],
-  animations: [fadeInAnimation]
+  animations: [fadeInAnimation, sliderRouteAnimation]
 })
 export class AuthLayoutComponent {
   public copyrightDate = new Date().getFullYear();
@@ -17,4 +18,12 @@ export class AuthLayoutComponent {
   ];
 
   public selectedTab = 0;
+
+  prepareRoute(outlet: RouterOutlet) {
+    return (
+      outlet &&
+      outlet.activatedRouteData &&
+      outlet.activatedRouteData['animation']
+    );
+  }
 }

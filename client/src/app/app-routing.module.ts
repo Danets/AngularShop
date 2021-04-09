@@ -20,8 +20,8 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       { path: '', redirectTo: '/login', pathMatch: 'full' },
-      { path: 'login', component: LoginPageComponent },
-      { path: 'register', component: RegisterPageComponent },
+      { path: 'login', component: LoginPageComponent, data: { animation: 'login' } },
+      { path: 'register', component: RegisterPageComponent, data: { animation: 'register' } },
       { 
         path: 'ui-components',
         loadChildren: () => import('./components/ui-components/ui-components.module').then(m => m.UiComponentsModule)
