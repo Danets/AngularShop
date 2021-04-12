@@ -26,10 +26,11 @@
   object-fit: cover;
   transition: transform 150ms cubic-bezier(0.25, 0.46, 0.45, 0.84);
   border-radius: 0.5em;
+  cursor: pointer;
 }
 
 .slide:hover {
-  transform: scale(1.025);
+  transform: scale(1.5);
 }
 
 /* Buttons */

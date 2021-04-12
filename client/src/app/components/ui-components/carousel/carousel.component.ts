@@ -1,11 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { trigger, transition, style, animate } from "@angular/animations";
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.css']
+  styleUrls: ['./carousel.component.css'],
+  animations: [
+    trigger('carouselAnimation', [
+      transition('void => *', [
+        style({ opacity: 0, transform: "scale(0.5)" }),
+        animate('300ms', style({ opacity: 1, transform: "scale(1)" }))
+      ]),
+      transition('* => void', [
+        animate('300ms', style({ opacity: 0, transform: "scale(0.5)" }))
+      ])
+    ])
+  ]
 })
-export class CarouselComponent {
+export class CarouselComponent implements OnInit {
   // @Input() slides;
 
   public slides = [
@@ -22,6 +34,16 @@ export class CarouselComponent {
   currentSlide = 0;
 
   constructor() {}
+
+  ngOnInit() {
+    this.preloadImages(); // for the demo
+  }
+
+  preloadImages() {
+    for (const slide of this.slides) {
+      new Image().src = slide;
+    }
+  }
 
   public onPreviousClick(): void {
     const previous = this.currentSlide - 1;
