@@ -9,9 +9,16 @@
     <li routerLinkActive="active">
       <a routerLink="/ui-components/rating">StarRating</a>
     </li>
+    <li routerLinkActive="active">
+      <a routerLink="/ui-components/slider">ThreeSlider</a>
+    </li>
   </ul>
 </nav>
 
 <app-star-rating [stars]="3.3"></app-star-rating>
+
+<div class="container">
+  <app-carousel [slides]="slides"></app-carousel>
+</div>
 
 <router-outlet></router-outlet>

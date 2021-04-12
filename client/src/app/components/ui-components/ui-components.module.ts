@@ -8,6 +8,7 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
     ProgressbarComponent,
     StarRatingComponent,
     TruncatePipe,
+    CarouselComponent,
   ],
   imports: [
     CommonModule,
