@@ -9,6 +9,7 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
 import { CarouselComponent } from './carousel/carousel.component';
+import { LightboxComponent } from './lightbox/lightbox.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CarouselComponent } from './carousel/carousel.component';
     StarRatingComponent,
     TruncatePipe,
     CarouselComponent,
+    LightboxComponent,
   ],
   imports: [
     CommonModule,

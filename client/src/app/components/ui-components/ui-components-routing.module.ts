@@ -6,6 +6,7 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { LightboxComponent } from './lightbox/lightbox.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
       { path: 'cards', component: AccordionComponent },
       { path: 'progress', component: ProgressbarComponent },
       { path: 'rating', component: StarRatingComponent },
-      { path: 'slider', component: CarouselComponent },                
+      { path: 'slider', component: CarouselComponent },
+      { path: 'lightbox', component: LightboxComponent },                                
     ]
   },
 
