@@ -1,0 +1,51 @@
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 10px;
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translate(-50%);
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+.close {
+  display: block;
+  padding: 4px;
+  font-size: 24px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.actions > button {
+  display: inline-block;
+  border: 0;
+  outline: none;
+  padding: 0 10px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 30px;
+  height: 32px;
+  transition: 0.2s all ease-in-out;
+}
+
+.actions > button:active,
+.actions > button:focus {
+  background-color: rgb(30, 100, 230);
+}

@@ -32,6 +32,7 @@ import { SwitcherComponent } from './shared/components/switcher/switcher.compone
 import { CounterComponent } from './shared/components/counter/counter.component';
 import { TabsComponent } from './shared/components/tabs/tabs.component';
 import { MouseOverDirective } from './shared/directives/mouse-over.directive';
+import { ToastComponent } from './shared/components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { MouseOverDirective } from './shared/directives/mouse-over.directive';
     CounterComponent,
     TabsComponent,
     MouseOverDirective,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,

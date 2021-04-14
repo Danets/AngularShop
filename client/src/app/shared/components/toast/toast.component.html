@@ -1,0 +1,15 @@
+<div class="wrapper" *ngIf="isShow">
+  <span class="close" (click)="onCloseToast()">&times;</span>
+  <div class="header">
+    <h5>Hi</h5>
+  </div>
+  <div class="content">
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+    </p>
+  </div>
+  <div class="actions">
+    <button type="button" (click)="onCloseToast()">Cancel</button>
+    <button type="button" (click)="onCloseToast()">Ok</button>
+  </div>
+</div>

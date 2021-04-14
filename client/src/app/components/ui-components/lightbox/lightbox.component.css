@@ -100,11 +100,16 @@ img {
 }
 
 img {
-  margin-bottom: -4px;
+  margin-bottom: -6px;
 }
 
 .images {
   opacity: 0.7;
+  border: 1px solid transparent;
+}
+
+.images.active {
+  border: 1px solid red;
 }
 
 .active,
