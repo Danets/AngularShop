@@ -1,0 +1,38 @@
+.stepper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+ol {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+li {
+  /* flex-grow: 1; */
+  margin: 1em;
+  font-weight: bold;
+  font-size: 1.3em;
+  position: relative;
+  height: auto;
+  text-align: center;
+}
+
+li.active {
+  background-color: black;
+  color: white;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  padding: 1em;
+  color: inherit;
+  border-bottom: solid thin transparent;
+}
+
+a:hover {
+  border-bottom: solid thin #000000;
+}

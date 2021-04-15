@@ -17,10 +17,10 @@
     <router-outlet #outlet="outlet"></router-outlet>
   </div>
 
-  <app-tabs [tabs]="tabs" (onSelected)="selectedTab = $event">
+  <!-- <app-tabs [tabs]="tabs" (onSelected)="selectedTab = $event">
     <app-switcher *ngIf="selectedTab === 0"></app-switcher>
     <app-counter *ngIf="selectedTab === 1"></app-counter>
-  </app-tabs>
+  </app-tabs> -->
 
   <app-toast></app-toast>
   
