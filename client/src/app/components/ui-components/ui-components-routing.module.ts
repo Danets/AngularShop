@@ -7,6 +7,7 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { LightboxComponent } from './lightbox/lightbox.component';
+import { SliderComponent } from './slider/slider.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
       { path: 'progress', component: ProgressbarComponent },
       { path: 'rating', component: StarRatingComponent },
       { path: 'slider', component: CarouselComponent },
-      { path: 'lightbox', component: LightboxComponent },                                
+      { path: 'lightbox', component: LightboxComponent },
+      { path: 'range', component: SliderComponent },                                                                
     ]
   },
 

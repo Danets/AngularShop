@@ -13,6 +13,7 @@ import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
 import { CarouselComponent } from './carousel/carousel.component';
 import { LightboxComponent } from './lightbox/lightbox.component';
 import { StepperComponent } from './stepper/stepper.component';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { StepperComponent } from './stepper/stepper.component';
     CarouselComponent,
     LightboxComponent,
     StepperComponent,
+    SliderComponent,
   ],
   imports: [
     CommonModule,

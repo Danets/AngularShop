@@ -1,9 +1,9 @@
-<section class="container">
+<section class="">
   <!-- The navbar for the wizard -->
   <header class="header">
     <ol>
       <ng-container *ngFor="let step of steps; let i = index">
-        <li [ngClass]="selectedIndex === i ? activeClass : ''">
+        <li [ngClass]="selectedIndex === i ? 'active' : ''">
           <a (click)="selectedIndex = i">
             <ng-container
               *ngIf="step.stepLabel; else showLabelText"

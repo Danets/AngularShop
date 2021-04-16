@@ -8,8 +8,8 @@ import { CdkStepper } from '@angular/cdk/stepper';
   providers: [{ provide: CdkStepper, useExisting: StepperComponent }],
 })
 export class StepperComponent extends CdkStepper {
-  @Input()
-  activeClass = 'active';
+  // @Input()
+  // activeClass = 'active';
 
   isNextButtonHidden() {
     return !(this.steps.length === this.selectedIndex + 1);
